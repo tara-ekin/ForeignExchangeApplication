@@ -1,12 +1,11 @@
 package com.tara.ForeignExchangeApplication.service.external.api;
 
+import com.sun.istack.internal.NotNull;
 import com.tara.ForeignExchangeApplication.web.request.ExchangeRateRequest;
 import com.tara.ForeignExchangeApplication.web.response.ExchangeRateResponse;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.Map;
 
 public class ExchangeRateApi {
 
@@ -14,15 +13,11 @@ public class ExchangeRateApi {
 
     private RestTemplate restTemplate = new RestTemplate();
 
-    public float getExchangeRate(ExchangeRateRequest request) {
+    public ExchangeRateResponse fetchExchangeRates(@NotNull ExchangeRateRequest request) {
         String address = exchangeRatesAddress.concat((request.getSourceCurrency()) + "," + request.getTargetCurrency());
         ResponseEntity<ExchangeRateResponse> responseEntity = restTemplate.exchange(address, HttpMethod.GET,
                 null, ExchangeRateResponse.class, "1");
 
-        Map<String, Float> currencies = responseEntity.getBody().getRates().getCurrencies();
-        float sourceRate = currencies.get(request.getSourceCurrency());
-        float targetRate = currencies.get(request.getTargetCurrency());
-
-        return targetRate/sourceRate;
+        return responseEntity.getBody();
     }
 }

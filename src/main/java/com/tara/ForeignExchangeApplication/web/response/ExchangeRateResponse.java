@@ -9,21 +9,22 @@ import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
 public class ExchangeRateResponse {
     @JsonProperty("success")
-    @Getter private boolean success;
+    private boolean success;
 
     @JsonProperty("timestamp")
-    @Getter private int timestamp;
+    private int timestamp;
 
     @JsonProperty("base")
-    @Getter private String base;
+    private String base;
 
     @JsonProperty("date")
-    @Getter private LocalDate date;
+    private LocalDate date;
 
     @JsonProperty("rates")
-    @Getter private ExchangeRates rates;
+    private ExchangeRates rates;
 
     // {"success":true,"timestamp":1653551643,"base":"EUR","date":"2022-05-26","rates":{"EUR":1,"TRY":17.523638}}
 }
