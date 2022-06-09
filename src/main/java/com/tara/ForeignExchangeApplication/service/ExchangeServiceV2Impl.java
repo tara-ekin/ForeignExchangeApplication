@@ -24,6 +24,7 @@ public class ExchangeServiceV2Impl implements ExchangeServiceV2{
             float targetRate = currencies.get(exchangeRateRequest.getTargetCurrency());
 
             exchangeRate.setRate(targetRate/sourceRate);
+            exchangeRate.setRateDate(response.getDate());
             exchangeRate.setSuccess(true);
 
         } catch (Exception e) {

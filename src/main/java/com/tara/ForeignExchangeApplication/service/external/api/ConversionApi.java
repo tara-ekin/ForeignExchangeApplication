@@ -20,6 +20,7 @@ public class ConversionApi {
             conversion.setExchangeRate(exchangeRate.getRate());
             conversion.setTargetAmount(request.getSourceAmount() * conversion.getExchangeRate());
             conversion.setTransactionId(UUID.randomUUID());
+            conversion.setTransactionDate(exchangeRate.getRateDate());
             conversion.setSuccess(true);
         }
         else {

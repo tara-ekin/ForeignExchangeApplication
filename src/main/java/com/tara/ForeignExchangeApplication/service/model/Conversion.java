@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 @NoArgsConstructor(force = true)
@@ -13,6 +14,7 @@ import java.util.UUID;
 public class Conversion {
     private boolean success;
     private UUID transactionId;
+    private LocalDate transactionDate;
     private String sourceCurrency;
     private String targetCurrency;
     private float sourceAmount;
